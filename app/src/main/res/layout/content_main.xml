@@ -12,8 +12,47 @@
     tools:context="com.example.johnathan.multithreading.MainActivity"
     tools:showIn="@layout/activity_main">
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create"
+        android:id="@+id/CreateBut"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Load"
+        android:id="@+id/LoadBut"
+        android:layout_below="@+id/CreateBut"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Clear"
+        android:id="@+id/ClearBut"
+        android:layout_below="@+id/LoadBut"
+        android:layout_alignParentStart="true" />
+
+    <ProgressBar
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/progressBar"
+        android:layout_above="@+id/LoadBut"
+        android:layout_alignParentEnd="true"
+        android:visibility="visible"
+        android:indeterminate="false" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="List of Files Loaded"
+        android:id="@+id/FileName"
+        android:layout_above="@+id/ClearBut"
+        android:layout_toEndOf="@+id/LoadBut"
+        android:layout_marginStart="36dp" />
+
 </RelativeLayout>
