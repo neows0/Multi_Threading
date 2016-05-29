@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:text="Clear"
         android:id="@+id/ClearBut"
-        android:layout_below="@+id/LoadBut"
+        android:layout_below="@+id/UpdateBut"
         android:layout_alignParentStart="true" />
 
     <TextView
@@ -55,5 +55,13 @@
         android:layout_above="@+id/LoadBut"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Update"
+        android:id="@+id/UpdateBut"
+        android:layout_below="@+id/LoadBut"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>

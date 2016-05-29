@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     public Button CreateBut;
     public Button LoadBut;
     public Button ClearBut;
+    public Button UpdateBut;
 
     private List<String> numbers = new ArrayList<String>();
 
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         CreateBut = (Button) findViewById(R.id.CreateBut);
         LoadBut =  (Button) findViewById(R.id.LoadBut);
         ClearBut =  (Button) findViewById(R.id.ClearBut);
+        UpdateBut =  (Button) findViewById(R.id.UpdateBut);
 
         CreateBut.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,6 +54,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         ClearBut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                numbers.clear();
+                //numbers.add("Clear");
+                TextView refrence = (TextView) findViewById(R.id.FileName);
+                refrence.setText(numbers.toString());
+            }
+        });
+        UpdateBut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //numbers.clear();
