@@ -1,5 +1,6 @@
 package com.example.johnathan.multithreading;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -11,6 +12,11 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     public Button LoadBut;
     public Button ClearBut;
 
-    private List<String> topicType = new ArrayList<String>();
+    private List<String> numbers = new ArrayList<String>();
 
     public void init() {
         CreateBut = (Button) findViewById(R.id.CreateBut);
@@ -30,21 +36,32 @@ public class MainActivity extends AppCompatActivity {
         CreateBut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Create writeFile = new Create (getApplicationContext());
+                //writeFile.run();
+                Thread one = new Thread (writeFile);
+                one.start();
             }
         });
         LoadBut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Load loadFile = new Load (numbers, getApplicationContext());
+                //loadFile.run();
+                Thread two = new Thread (loadFile);
+                two.start();
             }
         });
         ClearBut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                //numbers.clear();
+                //numbers.add("Clear");
+                TextView refrence = (TextView) findViewById(R.id.FileName);
+                refrence.setText(numbers.toString());
             }
         });
+        //TextView refrence = (TextView) findViewById(R.id.FileName);
+        //refrence.setText(numbers.toString());
 
     }
 
@@ -54,6 +71,27 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         init();
+
+        //Create writeFile = new Create (getApplicationContext());
+       // writeFile.run();
+        //Load loadFile = new Load (numbers, getApplicationContext());
+        //loadFile.run();
+        //TextView refrence = (TextView) findViewById(R.id.FileName);
+        //refrence.setText(numbers.toString());
+
+        Create writeFile = new Create (getApplicationContext());
+        Thread one = new Thread (writeFile);
+        one.start();
+        Load loadFile = new Load (numbers, getApplicationContext());
+        Thread two = new Thread (loadFile);
+        two.start();
+        try {
+            one.join();
+            two.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -67,6 +105,8 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+        //TextView refrence = (TextView) findViewById(R.id.FileName);
+        //refrence.setText(numbers.toString());
     }
 
 
